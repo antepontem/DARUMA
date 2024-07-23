@@ -7,5 +7,5 @@ DARUMA enables rapid prediction by using a simple convolutional neural network t
     pip install daruma
 
 ### Install docker
-    docker pull halabjp/daruma
+    docker pull antepontem/daruma
 
