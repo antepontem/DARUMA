@@ -9,3 +9,7 @@ DARUMA enables rapid prediction by using a simple convolutional neural network t
 ### Install docker
     docker pull antepontem/daruma
 
+## USAGE
+    python3 ./predict.py [SEQUENCE FILE]
+SEQUENCE FILE : Path to fasta formatted file(supports both multi-fasta and single-fasta).
+
