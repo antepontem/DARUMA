@@ -4,6 +4,6 @@ DARUMA enables rapid prediction by using a simple convolutional neural network t
 Developed by Fukuchi Lab, Maebashi Institute of Technology.
 
 
-**cpu/**: Uses only `numpy`
+**cpu/**: The CPU version is compatible with a wide range of CPUs and can be executed on Python 2 or 3 with the numpy library.
 
-**gpu/**: Requires a GPU
+**gpu/**: The execution time of the GPU version is significantly faster than that of the CPU version.
