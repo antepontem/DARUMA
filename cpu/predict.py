@@ -1,3 +1,6 @@
+import time
+start_time = time.time()
+
 import sys, os
 import argparse
 
@@ -9,7 +12,6 @@ output_format_dic = {"residue_single":format_residue_single,"residue_multi":form
 
 from models import DARUMA
 daruma_model = DARUMA()
-
 
 
 def main():
@@ -50,6 +52,10 @@ def main():
         timings_manager.end(ac)
 
     result_file_manager.close_manager()
+
+    execution_time = (time.time() - start_time)
+    timings_manager.append_write(f"\n# Execution time (seconds): {execution_time:.3f}\n")
+    timings_manager.append_write(f"# Seconds per protein: {execution_time / len(data):.3f}\n")
 
     return
 

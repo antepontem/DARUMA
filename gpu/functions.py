@@ -70,7 +70,7 @@ class TimingsManager:
         current_time = datetime.now()
         formatted_time = current_time.strftime("%a %b %d %H:%M:%S CET %Y")
         with open(self.path,"w") as f:
-            f.write(f"# Running DARUMA, started {formatted_time}\n")
+            f.write(f"# Running DARUMA(gpu), started {formatted_time}\n")
             f.write("sequence,milliseconds\n")
 
     def start(self):
@@ -80,6 +80,10 @@ class TimingsManager:
         execution_time = int((time.time() - self.start_time) * 1000)
         with open("timings.csv","a") as f:
             f.write(f"{ac},{execution_time}\n")
+
+    def append_write(self,out):
+        with open(self.path,"a") as f:
+            f.write(out)
 
 
 class ResultFileManager:

@@ -134,6 +134,10 @@ class TimingsManager:
         with open("timings.csv","a") as f:
             f.write(f"{ac},{execution_time}\n")
 
+    def append_write(self,out):
+        with open(self.path,"a") as f:
+            f.write(out)
+
 
 class ResultFileManager:
     def __init__(self,output_path):
