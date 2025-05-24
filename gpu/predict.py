@@ -28,18 +28,14 @@ def main():
     remove_short_regions = args.remove_short_regions
     gpu_id = args.gpu_id
 
-    # DARUMA呼び出し
     daruma_model = DARUMA(gpu_id)
     
-    # 入力
     with open(input_path,"r") as f:
         data = f.read().strip(">").split("\n>")
 
-    # 出力
     timings_manager = TimingsManager()
     result_file_manager = output_format_dic[output_format](output_path)
 
-    # 閾値
     threshold = 0.5
 
     if smoothing:

@@ -24,9 +24,6 @@ def load_AAindex():
     
     return Dic
 
-
-##### smoothing処理
-# smoothing
 def smoothing(window,prob):
     L = len(prob)
     pool = window//2
@@ -39,17 +36,14 @@ def smoothing(window,prob):
 def mean(l):
     return sum(l)/len(l)
 
-# クラスわけ
 def classify(prob,threshold=0.5):
     return np.where(np.array(prob)>=threshold,1,0).tolist()
 
-# 10残基未満のIDRをNegativeに置換
 def remove_short_idr(pred):
     pred = "".join(map(str,pred))
     pred = pred.replace("10","1-0").replace("01","0-1")
     return list(map(int,list("".join([_replace(region,"1","0") for region in pred.split("-")]))))
 
-# 10残基未満のStructureをPositiveに置換
 def remove_short_stru(pred):
     pred = "".join(map(str,pred))
     pred = pred.replace("10","1-0").replace("01","0-1")
@@ -69,7 +63,7 @@ def relu(x):
     return np.maximum(0, x)
 
 def softmax(x):
-    x = x - np.max(x, axis=-1, keepdims=True)   # オーバーフロー対策
+    x = x - np.max(x, axis=-1, keepdims=True)
     return np.exp(x) / np.sum(np.exp(x), axis=-1, keepdims=True)
 
 def D1im2col(x, filter_l):
@@ -156,12 +150,7 @@ class format_residue_single(ResultFileManager):
     def __init__(self,output_path="."):
         if not output_path.endswith("/"):
             output_path += "/"
-
-        # 要修正
-        # if not os.path.isdir(output_path):
-        #     print(f"The directory '{output_path}' does not exist.")
         
-        # self.path = output_path + "disorder/"
         self.path = "disorder/"
         if not os.path.exists(self.path):
             os.makedirs(self.path)

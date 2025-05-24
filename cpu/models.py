@@ -10,13 +10,13 @@ from struct import unpack
 
 class DARUMA:
     def __init__(self):
-        self.feature = load_AAindex() #AAindex呼び出し
-        self.model = CNN3_128_9_NN2_121_128()            #予測モデル
+        self.feature = load_AAindex()
+        self.model = CNN3_128_9_NN2_121_128()
 
     def predict_from_seqence(self, seq, threshold, smoothing_window=17, remove_short_regions=True):
         
         x = np.array([self.feature[res] for res in seq],dtype="float32")
-        prob = self.model(x)[:,1].tolist() #予測確率
+        prob = self.model(x)[:,1].tolist()
 
         if smoothing_window:
             prob = smoothing(smoothing_window,prob)
